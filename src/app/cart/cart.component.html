@@ -1,0 +1,38 @@
+<div class="card" style="height: 1000px;">
+    <div class="card-header">
+        {{title}}
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Products</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>price</th>
+                        <th>5 Star Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let product of products'>
+                        <td><img 
+                            [src]="product.imageUrl" 
+                            [title]="product.productName"
+                            [style.width.px]="imageWidth"
+                            [style.margin.px]="imageMargin">
+                        </td>
+                        <td>{{product.productName}}</td>
+                        <td>{{product.productCode}}</td>
+                        <td>{{product.releaseDate}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.starRating}}</td>
+                        <button class="btn btn-dark" (click)="delete(product)" style="margin:10px;"> Delete </button>
+                    </tr>
+                    <button (click)="order()" class="btn btn-primary">CheckOut</button>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

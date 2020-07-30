@@ -1,0 +1,15 @@
+<div class="row mt-5 container">
+    <div class="col-md-4 mb-3" *ngFor="let product of products">
+      <div class="card text-center" style="margin-top: 100px; width: 300px;">
+        <div class="card-body">
+          <h5 class="card-title">{{product.productName}}</h5>
+          <img style="width: 100px; height: 100px;" src="{{product.imageUrl}}" alt="cant load">
+          <p style="margin-top: 10px;margin-bottom: 0px;">price:{{product.price}}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <button (click)="addcart(product)" class="btn btn-primary">Add to Cart</button>
+          <!-- qty:<input type="string" style="width: 20px; height:20px;">un -->
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="card" style="height: 1000px;">
+    <div class="card-header">
+        {{title}}
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>OrderId</th>
+                        <th>Name of orderee</th>
+                        <th>phone</th>
+                        <th>Time of Delivery</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let resp of resps'>
+                        <td>{{resp._id}}</td>
+                        <td>{{resp.name}}</td>
+                        <td>{{resp.phone}}</td>
+                        <td>12:30</td>
+
+                        <button (click)="details(resp._id)" class="btn btn-primary">Order details</button>
+                    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

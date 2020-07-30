@@ -1,0 +1,155 @@
+<div>
+    <nav class="navbar bg-dark navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" style="font-size: 40px;" href="#page-top"><h1>SHOP EZY</h1></a>
+            <button class="navbar-toggler navbar-toggler-right text-light" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="">Home</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="sell/selllogin">Login</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="sell/sellregister">SignUp</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container" style="margin-top: 150px;">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">SignUp</div>
+                <div class="card-body">
+
+                    <form class="form-horizontal" [formGroup]="registerForm" (ngSubmit)="registerShop()">
+
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Shop Name</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" [(ngModel)]="users.shopname" formControlName="name" [class.is-invalid]="registerForm.get('name').invalid && registerForm.get('name').touched" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                                    <div *ngIf="registerForm.get('name').invalid && registerForm.get('name').touched">
+                                        <small *ngIf="registerForm.get('name').errors?.required" class="text-danger">Enter name please</small>
+                                        <small *ngIf="registerForm.get('name').errors?.minlength" class="text-danger">Enter a valid name</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Shop Email</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <input type="email" [(ngModel)]="users.shopemail" formControlName="email" [class.is-invalid]="registerForm.get('email').invalid && registerForm.get('email').touched" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                                    <div *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
+                                        <small *ngIf="registerForm.get('email').errors?.required" class="text-danger">Enter a email please</small>
+                                        <small *ngIf="registerForm.get('email').errors?.email" class="text-danger">Enter a valid email</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="cols-sm-2 control-label">Username</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input type="text" [(ngModel)]="users.username" formControlName="username" [class.is-invalid]="registerForm.get('username').invalid && registerForm.get('username').touched" class="form-control" name="username" id="username" placeholder="Enter your Username" />
+                                    <div *ngIf="registerForm.get('username').invalid && registerForm.get('username').touched">
+                                        <small *ngIf="registerForm.get('username').errors?.required" class="text-danger">Enter username please</small>
+                                        <small *ngIf="registerForm.get('username').errors?.minlength" class="text-danger">Enter a valid username</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="cols-sm-2 control-label">Password</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" [(ngModel)]="users.password" formControlName="password" [class.is-invalid]="registerForm.get('password').invalid && registerForm.get('password').touched" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                    <div *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
+                                        <small *ngIf="registerForm.get('password').errors?.required" class="text-danger">Enter a password please</small>
+                                        <small *ngIf="registerForm.get('password').errors?.minlength" class="text-danger">Enter a valid password</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Phone" class="cols-sm-2 control-label">Phone</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="text" [(ngModel)]="users.phone" formControlName="phone" [class.is-invalid]="registerForm.get('phone').invalid && registerForm.get('phone').touched" class="form-control" name="confirm" id="confirm" placeholder="Enter your Phone number" />
+                                    <div *ngIf="registerForm.get('phone').invalid && registerForm.get('phone').touched ">
+                                        <small *ngIf="registerForm.get('phone').errors?.required" class="text-danger">Enter your phone number</small>
+                                        <small *ngIf="registerForm.get('phone').errors?.pattern" class="text-danger">Enter a valid phone number</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <button type="submit" [disabled]='registerForm.invalid' class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                        </div>
+                         <div class="login-register">
+                            Already have an account? <a href="sell/selllogin"> Login</a>
+                        </div> 
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<section class="contact-section bg-black" id="contact" style="margin-top: 50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Address</h4>
+                        <hr class="my-4" />
+                        <div class="small text-black-50">Silicon Valley,California,USA</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Email</h4>
+                        <hr class="my-4" />
+                        <div class="small text-black-50"><a href="#!">zrk@gmail.com</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Phone</h4>
+                        <hr class="my-4" />
+                        <div class="small text-black-50">+91 7012566787</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social d-flex justify-content-center">
+            <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+            <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+            <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Your Website 2020</div></footer>
+
+
+
+
+
+    

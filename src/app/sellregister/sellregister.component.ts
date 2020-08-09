@@ -18,7 +18,6 @@ export class SellregisterComponent implements OnInit {
     registerForm=this.fb.group(
       {
           name: ['',[Validators.minLength(4),Validators.required]],
-          category: ['',[Validators.minLength(4),Validators.required]],
           email:['',[Validators.required,Validators.email]],
           username:['',[Validators.required,Validators.minLength(6)]],
           password:['',[Validators.minLength(8),Validators.required]],
